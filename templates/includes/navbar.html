@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'index' %}">Berkay Blog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'article:article_list' %}">Makaleler</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'about' %}">Hakkımda</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {% if request.user.is_authenticated %}
+        <span class="navbar-text">
+          Hoşgeldiniz, {{ user.get_full_name }}
+        </span> 
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'article:dashboard' %}">Kontrol Paneli</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:logout' %}">Çıkış Yapın</a>
+          </li>
+        {% else %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:register' %}">Kayıt Olun</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user:login' %}">Giriş Yapın</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
