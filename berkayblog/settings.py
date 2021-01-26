@@ -25,7 +25,7 @@ SECRET_KEY = 'k7%66x%s2z&a@(g$dn4o7+j5)m(t#l$i*z-&inme&(s-8*fslf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', ]
 
 
 # Application definition
@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     "user",
     "crispy_forms",
     "ckeditor",
-    'django_cleanup.apps.CleanupConfig'
-    
+    'django_cleanup.apps.CleanupConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

@@ -8,6 +8,7 @@ class Article(models.Model):
     content = RichTextField()
     created_date = models.DateTimeField(auto_now_add=True, verbose_name="Eklenme Zamanı")
     article_image = models.FileField(blank=True, null=True, verbose_name="Makaleye Fotoğraf Ekleyin")
+    #TODO add updated_date
     def __str__(self):
         return self.title
     class Meta:

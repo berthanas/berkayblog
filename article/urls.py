@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 app_name = "article"
@@ -12,4 +12,7 @@ urlpatterns = [
     path('delete/<int:id>', views.delete_article, name='delete_article'),
     path('', views.article_list, name='article_list'),
     path('comment/<int:id>', views.add_comment, name='add_comment'),
+    path('api/', views.ArticleList.as_view()),
+    path('api/<int:pk>', views.ArticleDetail.as_view()),
+    path('api/create', views.ArticleCreate.as_view())
 ]

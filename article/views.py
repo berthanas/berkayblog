@@ -6,6 +6,8 @@ from django.contrib.auth import login, authenticate, logout
 from .models import Article, Comment
 from .forms import ArticleForm
 from django.core.paginator import Paginator
+from rest_framework import generics
+from .serializers import ArticleSerializer
 
 # Create your views here.
 
@@ -88,4 +90,18 @@ def add_comment(request, id):
         comment.save()
         messages.success(request, "Yorum Eklendi")
     return redirect(reverse("article:detail",kwargs={"id":id}))
-    
+
+
+class ArticleList(generics.ListAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+#TODO user authentication will be implemented. Anyone can create articles with any user they want
+class ArticleCreate(generics.CreateAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+
+class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
